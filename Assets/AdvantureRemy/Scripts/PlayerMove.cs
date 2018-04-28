@@ -12,6 +12,13 @@ public class PlayerMove : MonoBehaviour {
     private Vector3 moveDirection = Vector3.zero;
 	public bool isDead = false;
 
+	public int timerOut = 300;
+	public Text timerText;
+	public Text gameOverText;
+	public Text winText;
+
+
+
 
     //private Rigidbody rb;
 
@@ -34,6 +41,10 @@ public class PlayerMove : MonoBehaviour {
 		countCoins = 0;
 		SetCoinsCountText ();
 		SetHeartCountText ();
+		winText.text = "";
+		StartCoroutine ("LoseTime");
+		gameOverText.text = "";
+
     }
 
      // Update is called once per frame
@@ -43,7 +54,7 @@ public class PlayerMove : MonoBehaviour {
 			return;
 		}
 
-		transform.Translate (Input.GetAxis ("Horizontal") * Time.deltaTime * moveSpeed , 0 , 1*speed);
+		//transform.Translate (Input.GetAxis ("Horizontal") * Time.deltaTime * moveSpeed , 0 , 1*speed);
 
         CharacterController controller = GetComponent<CharacterController>();
         if (controller.isGrounded)
@@ -61,10 +72,16 @@ public class PlayerMove : MonoBehaviour {
        // Rotate Player
             transform.Rotate(0, Input.GetAxis("Horizontal"), 0);
 
-        
+		timerText.text = ("Time : " + timerOut);
+		if (timerOut <= 0) 
+		{
+			StopCoroutine ("LoseTime");
+			GameOver ();
+		}
     }
 
-	void OnCollisionEnter(Collision other)
+
+	void OnTriggerEnter(Collider other)
 	{
 		if (other.gameObject.CompareTag ("Coins")) {
 			other.gameObject.SetActive (false);
@@ -101,9 +118,30 @@ public class PlayerMove : MonoBehaviour {
 	}
 	void SetCoinsCountText(){
 			countCoinsText.text = "Count : " + countCoins.ToString ();
+		if (countCoins >= 90) 
+		{
+			winText.text = "Excellent , You WIN!";
+		}
 	}
+
 	void SetHeartCountText(){
 			countHeartsText.text = "Hearts : " + countHearts.ToString ();
+	}
+
+	IEnumerator LoseTime()
+	{
+		while (true) 
+		{
+			//Deh bt2all l Time b 1  
+			yield return new WaitForSeconds (1);
+			timerOut--;
+		}
+	}
+
+	void GameOver()
+	{
+		gameOverText.text = "Game Over!!";
+		UnityEditor.EditorApplication.isPaused = true;
 	}
 
 	/*

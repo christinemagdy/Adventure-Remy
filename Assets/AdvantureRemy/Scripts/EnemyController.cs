@@ -7,22 +7,25 @@ public class EnemyController : MonoBehaviour {
 
 	public float LookRedius = 50f;
 
-	Transform target;
+	public Transform target;
 
-	NavMeshAgent agent;
+	private NavMeshAgent agent;
 
 	void Start () {
 
 		target = PlayerManager.instance.Player.transform;
 
 		agent = GetComponent<NavMeshAgent> ();
+		//if (target != null) {
+		//	agent.SetDestination (target.position);
 		
+		//}
 	}
 	
 	// Update is called once per frame
 	void Update () {
 
-		float distance = Vector3.Distance (target.position, transform.position);
+		float distance = Vector3.Distance (target.position,transform.position);
 
 		if (distance <= LookRedius) {
 

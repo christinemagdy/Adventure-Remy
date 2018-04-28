@@ -13,6 +13,6 @@ public class RunTiger : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		//transform.Translate (Input.GetAxis ("Horizontal") * Time.deltaTime * moveSpeed, 0, 1 * speed);
+		transform.Translate (Input.GetAxis ("Horizontal") * Time.deltaTime * moveSpeed, 0, 1 * speed);
 	}
 }
