@@ -4,64 +4,21 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class PlayerMove : MonoBehaviour {
-    //    private CharacterController controller;
-    //    private float speed = 5.0f;
-    //    public Vector3 moveVector;
-    //    public float verticalVelocity = 0;
-    //    public float gravity = 100;
-    //    private float animationDuration = 0.0f;
-    //    // Use this for initialization
-    //    void Start()
-    //    {
-    //        controller = GetComponent<CharacterController>();
-    //    }
-
-    //    // Update is called once per frame
-    //    void Update()
-    //    {
-    //        if (Time.time < animationDuration)
-    //        {
-    //            controller.Move(Vector3.forward * speed * 2 * Time.deltaTime);
-    //            return;
-    //        }
-    //        moveVector = Vector3.zero;
-    //        //moveVector.x = Input.GetAxisRaw("Horizontal");
-    //        if (controller.isGrounded)
-    //        {
-    //            verticalVelocity = 0.5f;
-    //        }
-    //        else {
-    //            verticalVelocity -= gravity * Time.deltaTime;
-    //        }
-    //        //X is left and right
-    //        moveVector.x = Input.GetAxisRaw("Horizontal") * speed;
-    //        //Y is up and down 
-    //        moveVector.y = verticalVelocity;
-    //        //Z is forward and backward
-    //        moveVector.z = speed;
-    //        controller.Move(moveVector * Time.deltaTime);
-
-
-    //        //controller.Move(Vector3.forward * Time.deltaTime * speed);
-    //    }
-    //}
-
-    public float speed = 6.0F;
+    public float speed = 10.0f;
     public float jumpSpeed = 15.0F;
+	public float moveSpeed;
     public float gravity = 20.0F;
     public float rotateSpeed = 7.0F;
     private Vector3 moveDirection = Vector3.zero;
+	public bool isDead = false;
 
 
-    private Rigidbody rb;
+    //private Rigidbody rb;
 
 	private int countCoins;
 	public Text countCoinsText;
 
-	private int countDiamound;
-	public Text countDiamoundText;
-
-	private int countHearts;
+	public int countHearts=3 ;
 	public Text countHeartsText;
 
 
@@ -71,27 +28,22 @@ public class PlayerMove : MonoBehaviour {
 
    void Start()
         {
-        rb = GetComponent<Rigidbody>();
+       // rb = GetComponent<Rigidbody>();
         
 
 		countCoins = 0;
-		countDiamound = 0;
-		countHearts = 3;
 		SetCoinsCountText ();
-		SetDiamoundCountText ();
 		SetHeartCountText ();
-
-
-
     }
 
      // Update is called once per frame
-        void Update()
-    {
-		/*
+        void Update(){
+		
 		if (isDead) {
 			return;
-		}*/
+		}
+
+		transform.Translate (Input.GetAxis ("Horizontal") * Time.deltaTime * moveSpeed , 0 , 1*speed);
 
         CharacterController controller = GetComponent<CharacterController>();
         if (controller.isGrounded)
@@ -110,14 +62,90 @@ public class PlayerMove : MonoBehaviour {
             transform.Rotate(0, Input.GetAxis("Horizontal"), 0);
 
         
-    }/*
+    }
+
+	void OnCollisionEnter(Collision other)
+	{
+		if (other.gameObject.CompareTag ("Coins")) {
+			other.gameObject.SetActive (false);
+			countCoins = countCoins + 1;
+			SetCoinsCountText ();
+		} 
+		 if (other.gameObject.CompareTag ("Hearts"))
+		{
+			other.gameObject.SetActive (false);
+			SetHeartCountText ();
+
+			if (countHearts == 3)
+			{
+				//countHearts = 3;
+				SetHeartCountText ();
+			} 
+			else if (countHearts < 3)
+			{
+				countHearts = countHearts + 1;
+				SetHeartCountText ();
+			}
+		} 
+		 if (other.gameObject.CompareTag ("Barrel")) {
+			other.gameObject.SetActive (true);
+			countHearts = countHearts - 1;
+			SetHeartCountText ();
+			if (countHearts == 0)
+			{
+				Time.timeScale = 0;
+				Death ();
+				//GameOver.gameObject.SetActive(true);
+			}
+		}
+	}
+	void SetCoinsCountText(){
+			countCoinsText.text = "Count : " + countCoins.ToString ();
+	}
+	void SetHeartCountText(){
+			countHeartsText.text = "Hearts : " + countHearts.ToString ();
+	}
+
+	/*
+	void OnPlayerHit (Collision hit){
+		if (hit.gameObject.tag == "Ground") {
+					return;
+		} 
+		if(hit.gameObject.tag == "Barrel"){
+			
+			countHearts = countHearts - 1;
+			SetHeartCountText ();
+			if (countHearts == 0)
+			{
+
+				Time.timeScale = 0;
+				//GameOver.gameObject.SetActive(true);
+			}
+		}
+	}*/
 	private void Death()
 	{
 		if (countHearts == 0) {
-			
-		}
-	}*/
+			//Debug.Log ("Deth");
+			isDead = true;
 
+		}
+
+
+		//GetComponent<Score> ().OnDeath ();
+	}
+}
+
+
+/*
+			
+			private void Death()
+			{
+				if (countHearts == 0) {
+					
+				}
+			}
+*/
     //__________________________________________________________________
 
   /*  void OnTriggerEnter(Collider other)
@@ -152,13 +180,7 @@ public class PlayerMove : MonoBehaviour {
             
         }
 
-        else if (other.gameObject.CompareTag("Diamonds"))
-        {
-            other.gameObject.SetActive(false);
-            CountDiamonds = CountDiamonds + 1;
-            SetCountDiamindsText();
-
-        }
+       
 
         else if (other.gameObject.CompareTag("Barriers"))
         {
@@ -195,60 +217,8 @@ public class PlayerMove : MonoBehaviour {
     }*/
 
    
-	void OnTriggerEnter(Collider other)
-	{
-		if(other.gameObject.CompareTag("Coins"))
-		{
-			other.gameObject.SetActive(false);
-			countCoins = countCoins + 1;
-			SetCoinsCountText ();
-		}
-		else if(other.gameObject.CompareTag("Diamound"))
-		{
-			other.gameObject.SetActive(false);
-			countDiamound = countDiamound + 1;
-			SetDiamoundCountText ();
-		} 
-		else if(other.gameObject.CompareTag("Hearts"))
-		{
-			other.gameObject.SetActive(false);
-			if (countHearts == 3) {
-				//countHearts = 3;
-				SetHeartCountText ();
-			} else {
-				countHearts = countHearts + 1;
-				SetHeartCountText ();
-			}
 
 
-
-		} 
-	}
-	void SetCoinsCountText()
-	{
-		countCoinsText.text = "Count : " + countCoins.ToString ();
-	}
-	void SetDiamoundCountText()
-	{
-		countDiamoundText.text = "Diamound : " + countDiamound.ToString ();
-	}
-	void SetHeartCountText()
-	{
-		countHeartsText.text = "Hearts : " + countHearts.ToString ();
-	}
-
-
-	private void OnPlayerHit (ControllerColliderHit hit)
-	{
-		if (hit.gameObject.tag == "Ground") {
-			return;
-		} 
-		else if(hit.gameObject.tag != "Ground"){
-			countHearts = countHearts - 1;
-		}
-	}
-
-}
 
 
 //    private CharacterController controller;

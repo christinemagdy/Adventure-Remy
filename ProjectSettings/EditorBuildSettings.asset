@@ -9,5 +9,5 @@ EditorBuildSettings:
     path: Assets/AdvantureRemy/Scene/MainMenu.unity
     guid: 6d1d7823af30a584c940b80175ccb87e
   - enabled: 1
-    path: Assets/AdvantureRemy/Scene/Level.unity
-    guid: fdfbb1b88d2a11c4b9d70dda11a69a8e
+    path: Assets/AdvantureRemy/Scene/Level - Copy.unity
+    guid: 07d201f127d6c324da58b6a37b33fe6b

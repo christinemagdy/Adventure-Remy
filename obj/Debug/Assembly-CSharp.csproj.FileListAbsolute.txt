@@ -111,7 +111,6 @@ F:\Adventure-Remy\Temp\bin\Debug\Unity.Cecil.Mdb.dll
 F:\Adventure-Remy\Temp\bin\Debug\UnityEditor.iOS.Extensions.Xcode.dll
 F:\Adventure-Remy\Temp\bin\Debug\Unity.CecilTools.dll
 F:\Adventure-Remy\Temp\bin\Debug\Unity.Cecil.Pdb.dll
-F:\Adventure-Remy\Temp\bin\Debug\Assembly-CSharp-firstpass.pdb
 F:\Adventure-Remy\Temp\bin\Debug\UnityEngine.xml
 F:\Adventure-Remy\Temp\bin\Debug\UnityEditor.xml
 F:\Adventure-Remy\Temp\bin\Debug\UnityEngine.UI.xml

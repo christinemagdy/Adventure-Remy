@@ -8,6 +8,9 @@ TagManager:
   - Diamound
   - Hearts
   - Ground
+  - Barriers
+  - Lack
+  - Barrel
   layers:
   - Default
   - TransparentFX

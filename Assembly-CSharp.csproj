@@ -60,36 +60,25 @@
      <Compile Include="Assets\AdvantureRemy\race-track-lake\Standard Assets\Environment\Water\Water\Scripts\Water.cs" />
      <Compile Include="Assets\AdvantureRemy\race-track-lake\Standard Assets\Environment\Water\Water\Scripts\WaterBase.cs" />
      <Compile Include="Assets\AdvantureRemy\race-track-lake\Standard Assets\Environment\Water\Water\Scripts\WaterTile.cs" />
+     <Compile Include="Assets\AdvantureRemy\Scripts\_PlayerMovementController.cs" />
      <Compile Include="Assets\AdvantureRemy\Scripts\CameraScript.cs" />
      <Compile Include="Assets\AdvantureRemy\Scripts\CoinsRotater.cs" />
+     <Compile Include="Assets\AdvantureRemy\Scripts\DeathMenu.cs" />
+     <Compile Include="Assets\AdvantureRemy\Scripts\EnemyController.cs" />
+     <Compile Include="Assets\AdvantureRemy\Scripts\gameOver.cs" />
      <Compile Include="Assets\AdvantureRemy\Scripts\GameOverMenu.cs" />
      <Compile Include="Assets\AdvantureRemy\Scripts\PlayeButtonMainMenu.cs" />
+     <Compile Include="Assets\AdvantureRemy\Scripts\PlayerManager.cs" />
      <Compile Include="Assets\AdvantureRemy\Scripts\PlayerMove.cs" />
-     <Compile Include="Assets\AdvantureRemy\Scripts\PlayerMovement.cs" />
-     <Compile Include="Assets\AdvantureRemy\Toucan\Scripts\Damage.cs" />
-     <Compile Include="Assets\AdvantureRemy\Toucan\Scripts\DestroyAtTime.cs" />
-     <Compile Include="Assets\AdvantureRemy\Toucan\Scripts\ExitOnKey.cs" />
-     <Compile Include="Assets\AdvantureRemy\Toucan\Scripts\Explosion.cs" />
-     <Compile Include="Assets\AdvantureRemy\Toucan\Scripts\Kill.cs" />
-     <Compile Include="Assets\AdvantureRemy\Toucan\Scripts\Missile.cs" />
-     <Compile Include="Assets\AdvantureRemy\Toucan\Scripts\Player.cs" />
-     <Compile Include="Assets\AdvantureRemy\Toucan\Scripts\ReloadOnKey.cs" />
-     <Compile Include="Assets\AdvantureRemy\Toucan\Scripts\RespawnArround.cs" />
-     <Compile Include="Assets\AdvantureRemy\Toucan\Scripts\Toucan.cs" />
+     <Compile Include="Assets\AdvantureRemy\Scripts\RunTiger.cs" />
+     <Compile Include="Assets\AdvantureRemy\Scripts\swich.cs" />
      <Compile Include="Assets\Character_Elf\Scripts\Player.cs" />
-     <Compile Include="Assets\GemExample\Scripts\DemoTimeOfDay.cs" />
-     <Compile Include="Assets\GemExample\Scripts\Orbit.cs" />
-     <None Include="Assets\AdvantureRemy\Toucan\Readme.txt" />
      <None Include="Assets\AdvantureRemy\race-track-lake\readmore.txt" />
      <None Include="Assets\AdvantureRemy\race-track-lake\Standard Assets\Environment\Water\Water4\Shaders\FXWater4Simple.shader" />
      <None Include="Assets\AdvantureRemy\race-track-lake\Standard Assets\Environment\Water (Basic)\Shaders\FXWaterBasic.shader" />
      <None Include="Assets\AdvantureRemy\race-track-lake\Standard Assets\Environment\Water\Water\Shaders\FXWaterPro.shader" />
      <None Include="Assets\AdvantureRemy\race-track-lake\Standard Assets\Environment\Water\Water4\Shaders\WaterInclude.cginc" />
      <None Include="Assets\AdvantureRemy\race-track-lake\Standard Assets\Environment\Water\Water4\Shaders\FXWater4Advanced.shader" />
-     <None Include="Assets\AdvantureRemy\Gem\Shaders\Gem.shader" />
- <Reference Include="Assembly-CSharp-firstpass">
- <HintPath>F:/Adventure-Remy/Library/ScriptAssemblies/Assembly-CSharp-firstpass.dll</HintPath>
- </Reference>
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>

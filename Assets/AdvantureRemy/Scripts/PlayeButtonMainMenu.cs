@@ -16,6 +16,6 @@ public class PlayeButtonMainMenu : MonoBehaviour {
 	}
 	
 	public void startPlaying(){
-		SceneManager.LoadScene("Level");
+		SceneManager.LoadScene("Level - Copy");
 	}
 }
